@@ -1,0 +1,8 @@
+^README\.Rmd$
+^logs\.sh$
+^_pkgdown\.yml$
+^SPclipseq\.Rproj$
+^\.Rproj\.user$
+^inst/rmarkdown/templates/SPclipseq/skeleton/.batchtools.conf.R
+^\.github
+^inst/extdata/.batchtools.conf.R

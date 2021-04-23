@@ -1,5 +1,5 @@
 ---
-title: "CLIP-Seq Workflow Template"
+title: "SPclipseq Workflow Template"
 author: "Author: Daniela Cassol (danielac@ucr.edu) and Thomas Girke (thomas.girke@ucr.edu)"
 date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 output:
@@ -10,7 +10,7 @@ output:
 package: systemPipeR
 vignette: |
   %\VignetteEncoding{UTF-8}
-  %\VignetteIndexEntry{Clip_seq Workflow}
+  %\VignetteIndexEntry{SPclipseq Workflow Template}
   %\VignetteEngine{knitr::rmarkdown}
 fontsize: 14pt
 bibliography: bibtex.bib
@@ -28,7 +28,7 @@ word-wrap: initial !important;
 
 <!-- 
 Compile from command-line  
-Rscript -e "rmarkdown::render('systemPipeChIPseq.Rmd', c('BiocStyle::html_document'), clean=F); knitr::knit('systemPipeChIPseq.Rmd', tangle=TRUE)"; Rscript ../md2jekyll.R systemPipeChIPseq.knit.md 13; Rscript -e "rmarkdown::render('systemPipeChIPseq.Rmd', c('BiocStyle::pdf_document'))"
+Rscript -e "rmarkdown::render('SPclipseq.Rmd', c('BiocStyle::html_document'), clean=TRUE)"
 -->
 
 
@@ -43,15 +43,6 @@ knitr::opts_chunk$set(
 ```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
 suppressPackageStartupMessages({
     library(systemPipeR)
-    library(BiocParallel)
-    library(Biostrings)
-    library(Rsamtools)
-    library(GenomicRanges)
-    library(ggplot2)
-    library(GenomicAlignments)
-    library(ShortRead)
-    library(ape)
-    library(batchtools)
 })
 ```
 
@@ -121,7 +112,7 @@ dev.off()
 ### Remove Adaptor with fastx_clipper 
 
 Removing Adapter sequence using fastx_toolkit.
-OBS: The adapter at the 3’ end should be AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC and the 10nt on the 5’ end of the read are the barcode.
+OBS: The adapter at the 3’ end should be `AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC` and the 10nt on the 5’ end of the read are the barcode.
 
 ```{r fastx_clipper, eval=FALSE}
 args <- systemArgs(sysma="param/trim_clipper.param", mytargets="targets.txt")
