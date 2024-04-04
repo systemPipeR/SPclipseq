@@ -12,12 +12,6 @@
 
 ### Installation
 
-To install the package, please use the _`BiocManager::install`_ command:
-```
-if (!requireNamespace("BiocManager", quietly=TRUE))
-    install.packages("BiocManager")
-BiocManager::install("systemPipeR/SPclipseq", build_vignettes=TRUE, dependencies=TRUE)
-```
 To obtain the *systemPipeR* and *systemPipeRdata*, please run as follow:
 ```
 if (!requireNamespace("BiocManager", quietly=TRUE))
@@ -26,17 +20,22 @@ BiocManager::install("systemPipeR")
 BiocManager::install("systemPipeRdata")
 ```
 
-## Workflow environment
+### Usage
 
-Workflow includes following steps:
+To test workflows quickly or design new ones from existing templates, users can
+generate with a single command workflow instances fully populated with sample data 
+and parameter files required for running a chosen workflow.
 
-1. Read preprocessing
-    + Quality filtering (trimming)
-    + FASTQ quality report
-2. Alignments: _`Hisat2`_ 
-3. Alignment stats 
-4. Peak calling
-5. Peak annotation with genomic context
-6. Differential binding analysis
-7. GO term enrichment analysis
-8. Motif analysis
+Use `git` or `git-bash.exe` (Windows) to download the template and run 
+
+```
+git clone https://github.com/systemPipeR/SPclipseq.git
+cd SPclipseq
+```
+
+To init the workflow management instance, run
+```r
+library("systemPipeR")
+sal <- SPRproject()
+sal <- importWF(sal, file_path = "SPclipseq.Rmd")
+```
